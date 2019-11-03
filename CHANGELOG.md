@@ -1,3 +1,54 @@
+1.40
+---
+- simplify pypi long description to prevent rendering error and release blocking
+- actually release changes from 1.39
+
+1.39
+---
+- fix targetting for login/signup (github#187)
+
+1.38
+---
+- add ability to retrieve mfa code from email via IMAP (github#166)
+
+1.37
+---
+- full credit report functionality (github#169)
+
+1.36
+---
+- add ability to get credit score (github#163)
+
+1.35
+---
+- by default, persist a browser session to avoid regular MFA requests (github#160)
+
+1.34
+---
+- correctly fix usages of parse_float (github#159)
+
+1.33
+---
+- fix chromedriver download on win64 (github#158)
+- fix usages of parse_float (github#157)
+
+1.32
+---
+- don't let "accounts need attention" block closing after a successful refresh (github#156)
+
+1.31
+---
+- fix for headless chromedriver not working on Windows (github#151)
+
+1.30
+---
+- chromedriver now supports --headless option (thanks @matthewwardrop/@eschizoid)
+- chromedriver now supports --mfa-method to automate triggering sms/email (thanks @matthewwardrop/@eschizoid)
+
+1.29
+---
+- use seleniumrequests to perform all requests (thanks @jprouty!)
+
 1.28
 ---
 - fix get_transactions_json when start_date predates all transactions (thanks @jprouty!)

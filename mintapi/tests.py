@@ -3,6 +3,8 @@ import datetime
 import json
 import unittest
 
+import requests
+
 try:
     from mock import patch  # Python 2
 except ImportError:
@@ -42,3 +44,21 @@ class MintApiTests(unittest.TestCase):
         # ensure everything is json serializable as this is the command-line
         # behavior.
         mintapi.print_accounts(accounts)
+
+    def test_chrome_driver_links(self):
+        for platform in mintapi.api.CHROME_ZIP_TYPES:
+            zip_type = mintapi.api.CHROME_ZIP_TYPES.get(platform)
+            zip_file_url = mintapi.api.CHROME_DRIVER_BASE_URL % (mintapi.api.CHROME_DRIVER_VERSION, zip_type)
+            request = requests.get(zip_file_url)
+            self.assertEqual(request.status_code, 200)
+
+    def test_parse_float(self):
+
+        answer = mintapi.api.parse_float('10%')
+        self.assertEqual(answer, float(10))
+
+        answer = mintapi.api.parse_float('$10')
+        self.assertEqual(answer, float(10))
+
+        answer = mintapi.api.parse_float('0.00%')
+        self.assertEqual(answer, float(0))
